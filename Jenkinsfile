@@ -39,6 +39,14 @@ pipeline {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
+        
+        stage('test') {
+            steps {
+                echo 'This is the test step'
+                sh 'mvn -B -DskipTests clean install'
+            }
+        } 
+        
     }
     post {
         failure {
