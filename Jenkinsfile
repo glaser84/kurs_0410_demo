@@ -40,10 +40,13 @@ pipeline {
             }
         }
         
-        stage('test') {
+        stage('build downstream') {
+            when {
+                expression {return env.build_downstream}
+                
+            }
             steps {
-                echo 'This is the test step'
-                sh 'mvn -B -DskipTests clean install'
+                echo 'This is the downstream build step'
             }
         } 
         
